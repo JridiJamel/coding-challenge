@@ -4,6 +4,8 @@ package com.interset.interview;
 import java.io.IOException;
 import java.util.List;
 
+import com.interset.interview.file.ProcessFile;
+
 public class Runner {
 
     /**
@@ -27,8 +29,19 @@ public class Runner {
             System.out.println("We currently only expect 1 argument! A path to a JSON or CSV file to read.");
             System.exit(1);
         }
-
-        System.out.println("Do cool stuff here!!");
-
+        else
+        {
+        	String path = args[0];
+        	ProcessFile process = new ProcessFile(path);
+        	try
+        	{
+        		process.extructData();
+        		process.getPopulationRecords().showStats();
+        	}catch(Exception e)
+        	{
+        		e.printStackTrace();
+        	}
+        	
+        }     
     }
 }
